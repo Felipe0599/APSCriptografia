@@ -45,5 +45,3 @@ if modo == 'E':
                  exit()
 if modo == 'D':
   print('O texto Descriptografado é: ' , convertido)
-
-   
