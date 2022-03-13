@@ -2,24 +2,24 @@ print(r"Bem-vindo à Criptografia de César")
 MODE_ENCRYPT = 1
 MODE_DECRYPT = 0
 
-def caesar(data, key, mode):
-    alphabet = 'abcdefghijklmnopqrstuvwyzàáãâéêóôõíúçABCDEFGHIJKLMNOPQRSTUVWYZÀÁÃÂÉÊÓÕÍÚÇ'
-    new_data = ''
+def caesar(data, chave, modo):
+    alfabeto = 'abcdefghijklmnopqrstuvwyzàáãâéêóôõíúçABCDEFGHIJKLMNOPQRSTUVWYZÀÁÃÂÉÊÓÕÍÚÇ'
+    conversao = ''
     for c in data:
-        index = alphabet.find(c)
-        if index == -1:
-            new_data += c
+        caracter = alfabeto.find(c)
+        if caracter == -1:
+            conversao += c
         else:
-            new_index = index + key if mode == MODE_ENCRYPT else index - key
-            new_index = new_index % len(alphabet)
-            new_data += alphabet[new_index:new_index+1]
-    return new_data
+            posiçao = caracter + chave if modo == MODE_ENCRYPT else caracter - chave
+            posiçao = posiçao % len(alfabeto)
+            conversao += alfabeto[posiçao:posiçao+1]
+    return conversao
 
 # Tests
-key = int(input('Digite o valor da chave:'))
+chave = int(input('Digite o valor da chave:'))
 original = input('Digite a mensagem a ser criptografada:')
 print('  Original:', original)
-ciphered = caesar(original, key, MODE_ENCRYPT)
-print('Encriptada:', ciphered)
-plain = caesar(ciphered, key, MODE_DECRYPT)
-print('Decriptada:', plain)
+cifrado = caesar(original, chave, MODE_ENCRYPT)
+print('Encriptada:', cifrado)
+decifrado = caesar(cifrado, chave, MODE_DECRYPT)
+print('Decriptada:', decifrado)
